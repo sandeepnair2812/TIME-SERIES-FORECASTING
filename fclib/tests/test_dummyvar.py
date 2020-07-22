@@ -25,6 +25,7 @@ def test_get_day_dummies():
     assert len(mat.columns) == 31
     for i in range(len(date)):
         assert mat.iloc[i, col.iloc[i] - 1] == 1
+    assert mat.loc[0, 1] == 1
 
 
 def test_get_dayofyear_dummies():
@@ -33,6 +34,7 @@ def test_get_dayofyear_dummies():
     assert len(mat.columns) == 366
     for i in range(len(date)):
         assert mat.iloc[i, col.iloc[i] - 1] == 1
+    assert mat.loc[0, 1] == 1
 
 
 def test_get_hour_dummies():
@@ -41,6 +43,7 @@ def test_get_hour_dummies():
     assert len(mat.columns) == 24
     for i in range(len(time)):
         assert mat.iloc[i, col.iloc[i]] == 1
+    assert mat.loc[0, 13] == 1
 
 
 def test_get_minute_dummies():
@@ -49,6 +52,7 @@ def test_get_minute_dummies():
     assert len(mat.columns) == 60
     for i in range(len(time)):
         assert mat.iloc[i, col.iloc[i]] == 1
+    assert mat.loc[0, 0] == 1
 
 
 def test_get_month_dummies():
@@ -57,6 +61,7 @@ def test_get_month_dummies():
     assert len(mat.columns) == 12
     for i in range(len(date)):
         assert mat.iloc[i, col.iloc[i] - 1] == 1
+    assert mat.loc[0, "Jan"] == 1
 
 
 def test_get_quarter_dummies():
@@ -65,6 +70,7 @@ def test_get_quarter_dummies():
     assert len(mat.columns) == 4
     for i in range(len(date)):
         assert mat.iloc[i, col.iloc[i] - 1] == 1
+    assert mat.loc[0, 1] == 1
 
 
 def test_get_weekday_dummies():
@@ -73,6 +79,7 @@ def test_get_weekday_dummies():
     assert len(mat.columns) == 7
     for i in range(len(date)):
         assert mat.iloc[i, col.iloc[i]] == 1
+    assert mat.loc[0, "Sat"] == 1
 
 
 def test_get_weekofyear_dummies():
@@ -81,3 +88,4 @@ def test_get_weekofyear_dummies():
     assert len(mat.columns) == 53
     for i in range(len(date)):
         assert mat.iloc[i, col.iloc[i] - 1] == 1
+    assert mat.loc[0, 52] == 1
