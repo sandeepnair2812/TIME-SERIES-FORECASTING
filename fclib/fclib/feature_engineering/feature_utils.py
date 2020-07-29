@@ -1,5 +1,5 @@
 # Copyright (c) Microsoft Corporation.
-# Licensed under the MIT License. 
+# Licensed under the MIT License.
 
 """
 This file contains utility functions for creating features for time
@@ -165,60 +165,6 @@ def day_of_year(date_time_col):
     return date_time_col.dt.dayofyear
 
 
-# def encoded_month_of_year(month_of_year):
-#     """
-#     Create one hot encoding of month of year.
-#     """
-#     month_of_year = pd.get_dummies(month_of_year, prefix="MonthOfYear")
-
-#     return month_of_year
-
-
-# def encoded_day_of_week(day_of_week):
-#     """
-#     Create one hot encoding of day_of_week.
-#     """
-#     day_of_week = pd.get_dummies(day_of_week, prefix="DayOfWeek")
-
-#     return day_of_week
-
-
-# def encoded_day_of_month(day_of_month):
-#     """
-#     Create one hot encoding of day_of_month.
-#     """
-#     day_of_month = pd.get_dummies(day_of_month, prefix="DayOfMonth")
-
-#     return day_of_month
-
-
-# def encoded_day_of_year(day_of_year):
-#     """
-#     Create one hot encoding of day_of_year.
-#     """
-#     day_of_year = pd.get_dummies(day_of_year)
-
-#     return day_of_year
-
-
-# def encoded_hour_of_day(hour_of_day):
-#     """
-#     Create one hot encoding of hour_of_day.
-#     """
-#     hour_of_day = pd.get_dummies(hour_of_day, prefix="HourOfDay")
-
-#     return hour_of_day
-
-
-# def encoded_week_of_year(week_of_year):
-#     """
-#     Create one hot encoding of week_of_year.
-#     """
-#     week_of_year = pd.get_dummies(week_of_year, prefix="WeekOfYear")
-
-#     return week_of_year
-
-
 def normalized_current_year(datetime_col, min_year, max_year):
     """
     Temporal feature indicating the position of the year of a record in the
@@ -255,11 +201,11 @@ def normalized_current_date(datetime_col, min_date, max_date):
     Returns:
         float: the position of the current date in the min_date:max_date range
     """
-    date = datetime_col # .dt.date
-    current_date = (date - min_date) # .apply(lambda x: x.days)
+    date = datetime_col  # .dt.date
+    current_date = date - min_date  # .apply(lambda x: x.days)
 
     if max_date != min_date:
-        current_date = current_date / (max_date - min_date) # .days
+        current_date = current_date / (max_date - min_date)  # .days
     else:
         current_date = pd.Series([0 for x in range(len(datetime_col))])
 
